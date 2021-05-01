@@ -15,7 +15,7 @@ app.post("/api/url/shorten", (req, res) => {
       shortUrl: shortid(longUrl),
       registeredTime: Date.now(),
     };
-    res.send(data.shortUrl);
+    res.send({ "short url": data.shortUrl });
   } catch (e) {
     console.error(e);
   }

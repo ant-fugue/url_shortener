@@ -2,10 +2,11 @@
   "name": "url_shortner",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index"
+    "start": "node server",
+    "test": "npx mocha \"src/**/*.test.js\" --recursive --file src/mocha-setup.js",
+    "dev": "nodemon server"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
     "valid-url": "^1.0.9"
   },
   "devDependencies": {
+    "mocha": "^8.3.2",
     "nodemon": "^1.19.1"
   }
 }
