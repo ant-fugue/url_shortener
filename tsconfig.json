@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "out",
+    "allowJs": true,
+    "target": "es5"
+  },
+  "include": [
+    "./src/**/*",
+    "src/models/Url.js",
+    "src/routes/url_shortener.js",
+    "src/server.js",
+    "config"
+  ]
+}
