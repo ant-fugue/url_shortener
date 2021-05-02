@@ -25,7 +25,6 @@ router.post("/shorten", async (req, res) => {
     try {
       // check if the requested url is registered before
       let url = await Url.findOne({ longUrl });
-
       if (url) {
         res.json(url.shortUrl);
       } else {

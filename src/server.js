@@ -10,7 +10,8 @@ connectDB();
 app.use(express.json());
 
 // define routes
-app.use("/api/url", require("../routes/url_generator"));
+app.use("/", require("../routes/url_redirection"));
+app.use("/api/url", require("../routes/short_url_generator"));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
