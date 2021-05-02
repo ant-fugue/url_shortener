@@ -1,25 +1,16 @@
 const express = require("express");
+const connectDB = require("../config/db");
 const app = express();
 const port = 5000;
-const shortid = require("shortid");
+
+// connect to MongoDB
+connectDB();
 
 // parse request whose content-type is  application/json
 app.use(express.json());
 
-app.post("/api/url/shorten", (req, res) => {
-  try {
-    // extract the json body from the client request and store it
-    const longUrl = req.body.longUrl;
-    const data = {
-      longUrl: longUrl,
-      shortUrl: shortid(longUrl),
-      registeredTime: Date.now(),
-    };
-    res.send({ "short url": data.shortUrl });
-  } catch (e) {
-    console.error(e);
-  }
-});
+// define routes
+app.use("/api/url", require("../routes/url_generator"));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

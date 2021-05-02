@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "node src/server",
     "test": "npx mocha \"src/**/*.test.js\" --recursive --file src/mocha-setup.js",
-    "dev": "nodemon server"
+    "dev": "nodemon src/server"
   },
   "keywords": [],
   "author": "",
