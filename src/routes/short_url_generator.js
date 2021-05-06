@@ -8,6 +8,7 @@ const Url = require("../models/Url");
 
 router.post("/shorten", async (req, res) => {
   const { longUrl } = req.body;
+  // console.log(longUrl);
   const baseUrl = config.get("baseUrl");
 
   // check base url
