@@ -10,13 +10,20 @@
     </style>
   </head>
   <body>
-    <button>Change color</button>
-    <p>short url:</p>
-    <script>
-      const btn = document.querySelector("button");
-      let shortUrl = document.querySelector("p");
+    <form class="form" id="myForm">
+      <label for="longurl">long url:</label>
+      <input type="text" name="longurl" id="longurl" value="" />
+      <input type="submit" value="submit" />
+    </form>
+    <div class="short_url">
+      <p>short url:</p>
+      <p id="display_short_url">blank</p>
+    </div>
 
-      // Example POST method implementation:
+    <script>
+      let formData = new FormData(myForm);
+      let shortUrl = document.querySelector("#display_short_url");
+
       async function getShortUrl(url = "", data = {}) {
         // Default options are marked with *
         const response = await fetch(url, {
@@ -35,19 +42,21 @@
         return response.json(); // parses JSON response into native JavaScript objects
       }
 
-      btn.addEventListener(
-        "click",
-        getShortUrl("http://localhost:5000/api/url/shorten", {
-          longUrl:
-            "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
-        }).then((data) => {
-          shortUrl.innerText = data;
-          console.log(data);
-        })
-      );
+      myForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-      // register event
-      // use addEventListener()
+        // get form data
+        const formData = new FormData(myForm);
+
+        // stringify the form data into json
+        // send the json to the API endpoint
+        getShortUrl("http://localhost:5000/api/url/shorten", {
+          longUrl: formData.get("longurl"),
+        }).then((data) => {
+          shortUrl.textContent = data;
+          console.log(data);
+        });
+      });
     </script>
   </body>
 </html>
